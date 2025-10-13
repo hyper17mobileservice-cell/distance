@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Distance — For Her</title>
+<style>
+  :root{
+    --bg: #fff8fb;
+    --accent: #ff6b9a;
+    --muted: #666;
+    --shadow: 0 8px 22px rgba(28,28,28,0.07);
+  }
+  html,body{
+    height:100%;
+    margin:0;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  body{
+    background:
+      radial-gradient(1200px 800px at 10% 10%, #fff0f4 0%, transparent 12%),
+      radial-gradient(1000px 700px at 90% 90%, #f6fff7 0%, transparent 14%),
+      var(--bg);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+  }
+  .stage{
+    width:100%;
+    max-width:940px;
+    height:420px;
+    position:relative;
+    background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:36px;
+    gap:20px;
+  }
+  .card{
+    width:230px;
+    min-width:190px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.09);
+    border:6px solid #fff;
+  }
+  .avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .label{
+    margin-top:18px;
+    text-align:center;
+    font-weight:600;
+    color:var(--muted);
+  }
+  .canvas{
+    flex:1 1 auto;
+    position:relative;
+    height:100%;
+    min-width:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+  }
+  .note{
+    position:absolute;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    font-weight:700;
+    color:#333;
+    background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+    padding:8px 14px;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    z-index:10;
+    font-size:14px;
+  }
+  .question-area{
+    margin-top:30px;
+    text-align:center;
+  }
+  .question-area p{
+    font-size:18px;
+    font-weight:600;
+    color:#333;
+    margin-bottom:14px;
+  }
+  .question-area button{
+    padding:10px 20px;
+    font-size:15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin:0 6px;
+    transition:transform 0.15s;
+  }
+  .question-area button:hover{transform:scale(1.05);}
+  .yes-btn{background:var(--accent);color:white;}
+  .no-btn{background:#ddd;color:#333;}
+  .reveal-img{
+    margin-top:20px;
+    display:none;
+    max-width:300px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  }
+  .message{
+    margin-top:20px;
+    font-size:16px;
+    color:#666;
+    display:none;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="card">
+      <div class="avatar"><img src="https://via.placeholder.com/400x400.png?text=Her+Photo" alt=""></div>
+      <div class="label">Her</div>
+    </div>
+    <div class="canvas">
+      <div class="note">1000 KM distance, 1.30 hours difference</div>
+      <svg viewBox="0 0 1000 400" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L12,6 L0,12 L3,6 z" fill="#ff6b9a"></path>
+          </marker>
+          <linearGradient id="lineGrad" x1="0" x2="1">
+            <stop offset="0%" stop-color="#ff9ab0" />
+            <stop offset="100%" stop-color="#ff6b9a" />
+          </linearGradient>
+        </defs>
+        <path d="M 50 200 Q 300 100 500 200 T 950 200" 
+              fill="none" stroke="url(#lineGrad)" stroke-width="6" 
+              marker-end="url(#arrowhead)" />
+      </svg>
+    </div>
+    <div class="card">
+      <div class="avatar"><img src="https://via.placeholder.com/400x400.png?text=Your+Photo" alt=""></div>
+      <div class="label">You</div>
+    </div>
+  </div>
+
+  <div class="question-area">
+    <p>But do you wanna see how close you are to me?</p>
+    <button class="yes-btn" onclick="showImage()">Yes 💖</button>
+    <button class="no-btn" onclick="showMessage()">No 😢</button>
+    <img src="https://via.placeholder.com/600x400.png?text=Your+Special+Image" alt="Surprise image" class="reveal-img" id="revealImg">
+    <div class="message" id="msg">Ouch... that hurt a little 🥲</div>
+  </div>
+
+<script>
+  function showImage(){
+    document.getElementById('revealImg').style.display = 'block';
+    document.getElementById('msg').style.display = 'none';
+  }
+  function showMessage(){
+    document.getElementById('revealImg').style.display = 'none';
+    document.getElementById('msg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
