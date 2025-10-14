@@ -1,0 +1,51 @@
+@media (max-width: 600px) {
+  .stage {
+    flex-direction: row;          /* keep it horizontal */
+    flex-wrap: wrap;              /* allow content to wrap if needed */
+    height: auto;
+    padding: 20px 10px;
+    gap: 10px;
+  }
+
+  .card {
+    width: 140px;                 /* make avatar cards smaller */
+    min-width: 120px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .label {
+    font-size: 16px;              /* shrink text slightly */
+  }
+
+  .canvas {
+    min-width: 140px;
+    height: 120px;                /* reduce arrow area */
+  }
+
+  .note {
+    font-size: 16px;              /* fits better on narrow screens */
+    top: 4px;
+    padding: 4px 8px;
+    max-width: 90%;
+    white-space: normal;         /* wraps text if needed */
+    text-align: center;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .question-area p {
+    font-size: 18px;
+  }
+
+  .question-area button {
+    font-size: 16px;
+    padding: 10px 18px;
+  }
+}
