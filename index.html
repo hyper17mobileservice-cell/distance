@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Distance — For Her</title>
 <style>
   :root{
@@ -30,7 +30,6 @@
   .stage{
     width:100%;
     max-width:940px;
-    height:420px;
     position:relative;
     background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
     border-radius:18px;
@@ -39,21 +38,21 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:36px;
-    gap:20px;
+    padding:20px;
+    gap:10px;
+    flex-wrap:wrap;
   }
   .card{
-    width:230px;
-    min-width:190px;
-    height:100%;
+    width:180px;
+    min-width:120px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
   }
   .avatar{
-    width:150px;
-    height:150px;
+    width:120px;
+    height:120px;
     border-radius:50%;
     overflow:hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.09);
@@ -66,47 +65,51 @@
     display:block;
   }
   .label{
-    margin-top:18px;
+    margin-top:12px;
     text-align:center;
-    font-weight:600;
+    font-weight:700;
     color:var(--muted);
+    font-size:18px;
   }
   .canvas{
-    flex:1 1 auto;
+    flex:1;
     position:relative;
-    height:100%;
-    min-width:220px;
+    min-width:140px;
+    height:160px;
     display:flex;
     align-items:center;
     justify-content:center;
   }
-  svg{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-  }
   .note{
     position:absolute;
-    top:12px;
+    top:8px;
     left:50%;
     transform:translateX(-50%);
     font-weight:700;
     color:#333;
     background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-    padding:8px 14px;
+    padding:6px 10px;
     border-radius:12px;
     box-shadow:0 6px 18px rgba(0,0,0,0.06);
     z-index:10;
-    font-size:24px;
+    font-size:18px;
+    letter-spacing:0.5px;
+    text-align:center;
+    max-width:90%;
+    white-space:normal;
+  }
+  svg{
+    width:100%;
+    height:100%;
+    max-height:160px;
+    pointer-events:none;
   }
   .question-area{
     margin-top:30px;
     text-align:center;
   }
   .question-area p{
-    font-size:24px;
+    font-size:22px;
     font-weight:700;
     color:#333;
     margin-bottom:14px;
@@ -132,21 +135,51 @@
   }
   .message{
     margin-top:20px;
-    font-size:16px;
+    font-size:18px;
     color:#666;
     display:none;
+  }
+
+  /* Responsive fixes */
+  @media (max-width: 600px) {
+    .avatar {
+      width:90px;
+      height:90px;
+    }
+    .label {
+      font-size:14px;
+    }
+    .canvas {
+      height:100px;
+      min-width:100px;
+    }
+    .note {
+      font-size:14px;
+      padding:4px 8px;
+      max-width:90%;
+    }
+    svg {
+      max-height:100px;
+    }
+    .question-area p {
+      font-size:18px;
+    }
+    .question-area button {
+      font-size:16px;
+      padding:10px 18px;
+    }
   }
 </style>
 </head>
 <body>
   <div class="stage">
     <div class="card">
-      <div class="avatar"><img src="her.png" alt=""></div>
-      <div class="label">you</div>
+      <div class="avatar"><img src="https://via.placeholder.com/400x400.png?text=Her+Photo" alt="Her Photo"></div>
+      <div class="label">Her</div>
     </div>
     <div class="canvas">
-      <div class="note">1000 Kilo meter distance, 1.30 hours time difference</div>
-      <svg viewBox="0 0 1000 400" preserveAspectRatio="none">
+      <div class="note">1000 KM distance, 1.30 hours difference</div>
+      <svg viewBox="0 0 680 160" preserveAspectRatio="none">
         <defs>
           <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto" markerUnits="strokeWidth">
             <path d="M0,0 L12,6 L0,12 L3,6 z" fill="#ff6b9a"></path>
@@ -156,14 +189,14 @@
             <stop offset="100%" stop-color="#ff6b9a" />
           </linearGradient>
         </defs>
-        <path d="M 50 200 Q 300 100 500 200 T 950 200" 
+        <path d="M 20 80 Q 180 20 340 80 T 660 80" 
               fill="none" stroke="url(#lineGrad)" stroke-width="6" 
               marker-end="url(#arrowhead)" />
       </svg>
     </div>
     <div class="card">
-      <div class="avatar"><img src="mee.jpg" alt=""></div>
-      <div class="label">me</div>
+      <div class="avatar"><img src="https://via.placeholder.com/400x400.png?text=Your+Photo" alt="Your Photo"></div>
+      <div class="label">You</div>
     </div>
   </div>
 
@@ -171,7 +204,7 @@
     <p>But do you wanna see how close you are to me?</p>
     <button class="yes-btn" onclick="showImage()">Yes 💖</button>
     <button class="no-btn" onclick="showMessage()">No 😢</button>
-    <img src="heart.jfif" alt="Surprise image" class="reveal-img" id="revealImg">
+    <img src="https://via.placeholder.com/600x400.png?text=Your+Special+Image" alt="Surprise image" class="reveal-img" id="revealImg">
     <div class="message" id="msg">Ouch... that hurt a little 🥲</div>
   </div>
 
